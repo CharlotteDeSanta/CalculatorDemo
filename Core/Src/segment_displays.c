@@ -1,6 +1,16 @@
-//
-// Created by Leon Cao on 2025/5/23.
-//
+
+// /**
+//  * @file ${FILE_NAME}
+//  * @brief
+//  * @author CharlotteDeSanta
+//  * @date ${YEAR}
+//  *
+//  * @copyright Copyright (c) ${YEAR} CharlotteDeSanta. All rights reserved.
+//  *
+//  * This software is licensed under terms that can be found in the LICENSE file
+//  * in the root directory of this software component.
+//  *
+
 #include "segment_displays.h"
 
 // 数码管段码表（共阴极）
