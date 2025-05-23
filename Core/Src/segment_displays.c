@@ -1,3 +1,16 @@
+
+// /**
+//  * @file segment_displays.c
+//  * @brief
+//  * @author CharlotteDeSanta
+//  * @date 25-5-24 上午12:11
+//  *
+//  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
+//  *
+//  * This software is licensed under terms that can be found in the LICENSE file
+//  * in the root directory of this software component.
+//  *
+
 #include "segment_displays.h"
 
 // 数码管段码表（共阴极）

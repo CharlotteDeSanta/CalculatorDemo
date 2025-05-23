@@ -1,3 +1,16 @@
+
+// /**
+//  * @file keyboard.h
+//  * @brief
+//  * @author CharlotteDeSanta
+//  * @date 25-5-24 上午12:11
+//  *
+//  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
+//  *
+//  * This software is licensed under terms that can be found in the LICENSE file
+//  * in the root directory of this software component.
+//  *
+
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
