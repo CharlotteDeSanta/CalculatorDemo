@@ -1,20 +1,16 @@
+// /**
+//  * @file stm32f1xx_it.c
+//  * @brief
+//  * @author CharlotteDeSanta
+//  * @date 25-5-24 下午12:40
+//  *
+//  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
+//  *
+//  * This software is licensed under terms that can be found in the LICENSE file
+//  * in the root directory of this software component.
+//  *
+
 /* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file    stm32f1xx_it.c
-  * @brief   Interrupt Service Routines.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -197,36 +193,6 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32f1xx.s).                    */
 /******************************************************************************/
-
-/**
-  * @brief This function handles EXTI line4 interrupt.
-  */
-void EXTI4_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI4_IRQn 0 */
-
-  /* USER CODE END EXTI4_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(KEY_ROW1_Pin);
-  /* USER CODE BEGIN EXTI4_IRQn 1 */
-
-  /* USER CODE END EXTI4_IRQn 1 */
-}
-
-/**
-  * @brief This function handles EXTI line[9:5] interrupts.
-  */
-void EXTI9_5_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
-
-  /* USER CODE END EXTI9_5_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(KEY_ROW2_Pin);
-  HAL_GPIO_EXTI_IRQHandler(KEY_ROW3_Pin);
-  HAL_GPIO_EXTI_IRQHandler(KEY_ROW4_Pin);
-  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
-
-  /* USER CODE END EXTI9_5_IRQn 1 */
-}
 
 /**
   * @brief This function handles TIM2 global interrupt.

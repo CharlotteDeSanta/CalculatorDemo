@@ -1,21 +1,16 @@
+// /**
+//  * @file main.h
+//  * @brief
+//  * @author CharlotteDeSanta
+//  * @date 25-5-24 下午12:40
+//  *
+//  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
+//  *
+//  * This software is licensed under terms that can be found in the LICENSE file
+//  * in the root directory of this software component.
+//  *
+
 /* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -75,16 +70,12 @@ void Error_Handler(void);
 #define KEY_COL4_GPIO_Port GPIOB
 #define KEY_ROW1_Pin GPIO_PIN_4
 #define KEY_ROW1_GPIO_Port GPIOB
-#define KEY_ROW1_EXTI_IRQn EXTI4_IRQn
 #define KEY_ROW2_Pin GPIO_PIN_5
 #define KEY_ROW2_GPIO_Port GPIOB
-#define KEY_ROW2_EXTI_IRQn EXTI9_5_IRQn
 #define KEY_ROW3_Pin GPIO_PIN_6
 #define KEY_ROW3_GPIO_Port GPIOB
-#define KEY_ROW3_EXTI_IRQn EXTI9_5_IRQn
 #define KEY_ROW4_Pin GPIO_PIN_7
 #define KEY_ROW4_GPIO_Port GPIOB
-#define KEY_ROW4_EXTI_IRQn EXTI9_5_IRQn
 #define SEG_CLK_Pin GPIO_PIN_8
 #define SEG_CLK_GPIO_Port GPIOB
 #define SEG_DATA_Pin GPIO_PIN_9

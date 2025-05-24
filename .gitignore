@@ -1,6 +1,7 @@
 # IDE
 .idea/
 cmake-build-debug/
+cmake-build-release/
 *.iml
 
 # Build outputs

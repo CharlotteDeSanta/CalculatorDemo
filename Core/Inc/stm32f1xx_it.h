@@ -1,20 +1,16 @@
+// /**
+//  * @file stm32f1xx_it.h
+//  * @brief
+//  * @author CharlotteDeSanta
+//  * @date 25-5-24 下午12:40
+//  *
+//  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
+//  *
+//  * This software is licensed under terms that can be found in the LICENSE file
+//  * in the root directory of this software component.
+//  *
+
 /* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file    stm32f1xx_it.h
-  * @brief   This file contains the headers of the interrupt handlers.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -55,8 +51,6 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
-void EXTI4_IRQHandler(void);
-void EXTI9_5_IRQHandler(void);
 void TIM2_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 

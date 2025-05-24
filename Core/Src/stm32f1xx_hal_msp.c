@@ -1,21 +1,16 @@
+// /**
+//  * @file stm32f1xx_hal_msp.c
+//  * @brief
+//  * @author CharlotteDeSanta
+//  * @date 25-5-24 下午12:40
+//  *
+//  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
+//  *
+//  * This software is licensed under terms that can be found in the LICENSE file
+//  * in the root directory of this software component.
+//  *
+
 /* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file         stm32f1xx_hal_msp.c
-  * @brief        This file provides code for the MSP Initialization
-  *               and de-Initialization codes.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -79,54 +74,6 @@ void HAL_MspInit(void)
   /* USER CODE BEGIN MspInit 1 */
 
   /* USER CODE END MspInit 1 */
-}
-
-/**
-  * @brief RTC MSP Initialization
-  * This function configures the hardware resources used in this example
-  * @param hrtc: RTC handle pointer
-  * @retval None
-  */
-void HAL_RTC_MspInit(RTC_HandleTypeDef* hrtc)
-{
-  if(hrtc->Instance==RTC)
-  {
-    /* USER CODE BEGIN RTC_MspInit 0 */
-
-    /* USER CODE END RTC_MspInit 0 */
-    HAL_PWR_EnableBkUpAccess();
-    /* Enable BKP CLK enable for backup registers */
-    __HAL_RCC_BKP_CLK_ENABLE();
-    /* Peripheral clock enable */
-    __HAL_RCC_RTC_ENABLE();
-    /* USER CODE BEGIN RTC_MspInit 1 */
-
-    /* USER CODE END RTC_MspInit 1 */
-
-  }
-
-}
-
-/**
-  * @brief RTC MSP De-Initialization
-  * This function freeze the hardware resources used in this example
-  * @param hrtc: RTC handle pointer
-  * @retval None
-  */
-void HAL_RTC_MspDeInit(RTC_HandleTypeDef* hrtc)
-{
-  if(hrtc->Instance==RTC)
-  {
-    /* USER CODE BEGIN RTC_MspDeInit 0 */
-
-    /* USER CODE END RTC_MspDeInit 0 */
-    /* Peripheral clock disable */
-    __HAL_RCC_RTC_DISABLE();
-    /* USER CODE BEGIN RTC_MspDeInit 1 */
-
-    /* USER CODE END RTC_MspDeInit 1 */
-  }
-
 }
 
 /**
