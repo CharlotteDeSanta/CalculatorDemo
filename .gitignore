@@ -3,7 +3,6 @@
 cmake-build-debug/
 cmake-build-release/
 *.iml
-*.cfg
 
 # Build outputs
 Debug/
