@@ -2,7 +2,7 @@
 //  * @file main.c
 //  * @brief
 //  * @author CharlotteDeSanta
-//  * @date 25-6-6 上午10:48
+//  * @date 25-6-6 下午11:01
 //  *
 //  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
 //  *
@@ -58,7 +58,7 @@ int main(void)
 
   while (1)
   {
-    // 主循环中不扫描键盘，由定时器处理
+    // 主循环不处理键盘扫描，由定时器+中断完成
   }
 }
 
@@ -75,7 +75,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
   HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK|RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -121,24 +121,30 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  GPIO_InitStruct.Pin = KEY_COL1_Pin | KEY_COL2_Pin | KEY_COL3_Pin | KEY_COL4_Pin | SEG_CLK_Pin | SEG_DATA_Pin;
+  GPIO_InitStruct.Pin = KEY_COL1_Pin|KEY_COL2_Pin|KEY_COL3_Pin|KEY_COL4_Pin|SEG_CLK_Pin|SEG_DATA_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   GPIO_InitStruct.Pin = KEY_ROW1_Pin|KEY_ROW2_Pin|KEY_ROW3_Pin|KEY_ROW4_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if (htim->Instance == TIM2)
   {
+    Keyboard_NextColumn();
+    Keyboard_ColumnScan();
     Display_Scan();
-    Keyboard_Scan(); // 使用定时器周期性扫描按键
   }
 }
 
@@ -152,10 +158,8 @@ void Calculator_KeyPress(uint8_t key)
     isFirstKey = 0;
   }
 
-  if (key >= '0' && key <= '9')
-  {
-    if (inputState == 0)
-    {
+  if (key >= '0' && key <= '9') {
+    if (inputState == 0) {
       if (!decimal) {
         num1 = num1 * 10 + (key - '0');
       } else {
@@ -167,9 +171,7 @@ void Calculator_KeyPress(uint8_t key)
         num1 = num1 + value;
       }
       Display_Number(num1);
-    }
-    else
-    {
+    } else {
       if (!decimal) {
         num2 = num2 * 10 + (key - '0');
       } else {
@@ -182,33 +184,24 @@ void Calculator_KeyPress(uint8_t key)
       }
       Display_Number(num2);
     }
-  }
-  else if (key == '.')
-  {
+  } else if (key == '.') {
     if (decimal == 0) {
       decimal = 1;
       decimalCount = 0;
     }
-  }
-  else if (key == '+' || key == '-' || key == '*' || key == '/') {
+  } else if (key == '+' || key == '-' || key == '*' || key == '/') {
     operator = key;
     inputState = 1;
     decimal = 0;
     decimalCount = 0;
-  } else if (key == '=')
-  {
+  } else if (key == '=') {
     float result = 0;
-    switch (operator)
-    {
-    case '+': result = num1 + num2;
-      break;
-    case '-': result = num1 - num2;
-      break;
-    case '*': result = num1 * num2;
-      break;
-    case '/': result = num2 != 0 ? num1 / num2 : 0;
-      break;
-    default: result = inputState == 0 ? num1 : num2; break;
+    switch (operator) {
+      case '+': result = num1 + num2; break;
+      case '-': result = num1 - num2; break;
+      case '*': result = num1 * num2; break;
+      case '/': result = num2 != 0 ? num1 / num2 : 0; break;
+      default: result = inputState == 0 ? num1 : num2; break;
     }
     Display_Number(result);
     num1 = result;

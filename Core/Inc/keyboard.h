@@ -3,7 +3,7 @@
 //  * @file keyboard.h
 //  * @brief
 //  * @author CharlotteDeSanta
-//  * @date 25-5-24 上午12:11
+//  * @date 25-6-6 下午11:01
 //  *
 //  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
 //  *
@@ -25,5 +25,7 @@ void Keyboard_Init(void);
 void Keyboard_SetCallback(KeyCallback callback);
 // 键盘扫描(在中断中调用)
 void Keyboard_Scan(void);
-
+void Keyboard_ColumnScan(void);
+uint8_t Keyboard_GetKey(void);
+void Keyboard_NextColumn(void);
 #endif
