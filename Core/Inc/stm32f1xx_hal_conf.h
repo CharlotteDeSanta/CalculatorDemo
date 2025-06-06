@@ -2,7 +2,7 @@
 //  * @file stm32f1xx_hal_conf.h
 //  * @brief
 //  * @author CharlotteDeSanta
-//  * @date 25-5-24 下午12:40
+//  * @date 25-6-6 上午10:48
 //  *
 //  * @copyright Copyright (c) 2025 CharlotteDeSanta. All rights reserved.
 //  *
