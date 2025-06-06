@@ -127,7 +127,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  GPIO_InitStruct.Pin = KEY_ROW1_Pin|KEY_ROW2_Pin|KEY_ROW3_Pin | KEY_ROW4_Pin;
+  GPIO_InitStruct.Pin = KEY_ROW1_Pin | KEY_ROW2_Pin | KEY_ROW3_Pin | KEY_ROW4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -186,13 +186,15 @@ void Calculator_KeyPress(uint8_t key)
       Display_Number(num2);
     }
   }
-  else if (key == '.') {
+  else if (key == '.')
+  {
     if (decimal == 0) {
       decimal = 1;
       decimalCount = 0;
     }
   }
-  else if (key == '+' || key == '-' || key == '*' || key == '/') {
+  else if (key == '+' || key == '-' || key == '*' || key == '/')
+  {
     operator = key;
     inputState = 1;
     decimal = 0;
@@ -211,7 +213,8 @@ void Calculator_KeyPress(uint8_t key)
       break;
     case '/': result = num2 != 0 ? num1 / num2 : 0;
       break;
-    default: result = inputState == 0 ? num1 : num2; break;
+    default: result = inputState == 0 ? num1 : num2;
+      break;
     }
     Display_Number(result);
     num1 = result;
